@@ -7,6 +7,7 @@ to be the newest OekakiBBS for PHP8
 - なんとログファイルが１コにまとまった！すごい！画期的！
 - まあお絵かき機能で色々増えると思います。
 - テンプレートエンジンにTwigを使っております。これも便利。
+- rapid oekaki image environment でROIEです。…目指してます。
 
 ## 更新履歴
 
