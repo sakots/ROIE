@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ themedir }}/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <nav>
+            <p><a href="{{ self }}">[戻る]</a></p>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>リプモード</h2>
+            <h3>[{{ repto.0 }}]{{ repto.2 }} (by {{ repto.1 }}) にリプライ</h3>
+            <form action="{{ self }}?mode=reppost" method="post" enctype="multipart/form-data">
+                名前: <input type="text" name="name" value="" autocomplete="username"><br>
+                本文: <input type="text" name="text" value=""><br>
+                <input type="hidden" name="token" value="{{ session_id }}">
+                <input type="hidden" name="oya_no" value="{{ repto.0 }}">
+                <input type="hidden" name="oya_time" value="{{ repto.5 }}">
+                <input type="hidden" name="age" value="{{ repto.7 }}">
+                <button type="submit">投稿</button>
+            </form>
+        </section>
+        <section>
+            <h2>リプ一覧</h2>
+            <div class="oya">
+                {% set rep = 0 %}
+                {% for row in rows %}{% if row.4 == repto.0 and row.0 != repto.0 %}
+                <div class="rep">
+                    <span class="content">└[{{ row.0 }}] {{ row.2 }} (by {{ row.1 }})</span>
+                </div>
+                {% set rep = rep + 1 %}
+                {% endif %}{% endfor %}
+                {% if rep == 0 %}
+                <p>リプはまだありません</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        {{ include('footer.html.twig') }}
+    </footer>
+</body>
+</html>
