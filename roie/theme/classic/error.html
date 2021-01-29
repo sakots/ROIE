@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ themedir }}/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <nav>
+            <p><a href="#" onclick="javascript:window.history.back(-1);return false;">[もどる]</a></p>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>ERROR !</h2>
+            <p>{{ messege }}</p>
+        </section>
+    </main>
+    <footer>
+        {{ include('footer.html.twig') }}
+    </footer>
+</body>
+</html>
